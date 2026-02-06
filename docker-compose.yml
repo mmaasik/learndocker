@@ -1,6 +1,8 @@
 services: 
   web:
-    image: httpd 
+    build:
+      context: .
+      dockerfile: dockerfile
     ports:
       - 80:80
     volumes:
@@ -10,6 +12,7 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: wordpress
     volumes:
       - kit24dbdata:/var/lib/mysql
 
